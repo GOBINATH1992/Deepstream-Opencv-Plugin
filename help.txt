@@ -1,0 +1,38 @@
+Pre-requisites:
+- GStreamer-1.0 Development package
+- GStreamer-1.0 Base Plugins Development package
+- Linux: Driver version 470.57.02 or higher
+- CUDA 11.0 or higher Toolkit
+
+Install using:
+   sudo apt-get install libgstreamer-plugins-base1.0-dev libgstreamer1.0-dev
+On x86 :  sudo apt-get install -y cuda-compat-12-1
+--------------------------------------------------------------------------------
+  
+Compiling Opencv from source, installing and testing the plugin:
+Export or set in the appropriate Deepstream version using DS_VER in install.sh
+Export or set in the appropriate SM_COMPUTE value using SM_COMPUTE in  install.sh Refer https://developer.nvidia.com/cuda-gpus
+To disable cuda acclerated decoding set USE_CPU=1 
+
+Run chmod a+x install.sh  and ./install.sh
+
+About:
+This plugin uses  Opencv with CUDA accleration to  read video stream and fed them into gstreamer pipeline directly to GPU output buffers using the
+video/x-raw(memory:NVMM) data type.
+
+NOTE:
+1. Currently gst-nvvideotestsrc plugin is only supported on X86 and CUDA_UNIFIED_MEMORY. 
+2. This pluign only output RGBA buffers others format are not supported
+
+Post installation :
+nano	~/.bashrc
+add follwing lines at end
+PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.8/site-packages
+export PYTHONPATH
+ 
+ 
+References:
+https://gist.github.com/minhhieutruong0705/8f0ec70c400420e0007c15c98510f133
+https://gist.github.com/raulqf/f42c718a658cddc16f9df07ecc627be7 
+https://github.com/opencv/opencv_contrib/issues/3362 
+ 

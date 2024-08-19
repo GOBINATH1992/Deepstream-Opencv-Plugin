@@ -1,0 +1,18 @@
+unzip the code
+change working directory and run the following command
+
+chmod a+x install.sh
+./install.sh
+
+after finishing the setup follow the below lines
+nano	~/.bashrc
+add follwing lines at end
+PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.8/site-packages
+export PYTHONPATH
+
+Note: this file works only for gpu compute capabality of 8.6
+to check the capabality use the following command
+nvidia-smi -q
+
+
+installtion will take time
